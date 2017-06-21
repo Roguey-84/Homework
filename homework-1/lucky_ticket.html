@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Счастливый билет</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Счастливый билет</h1>
+        <div class="data-form">
+            <div class="data-form__input-form">
+                <label for="ticket" class="data-form__input-form__label">Введите номер вашего билета:</label>
+                <input type="text" id="ticket" class="data-form__input-form__input" placeholder="Введите шестизначное число">
+            </div>
+            <button class="data-form__button" id="getResult" onclick="checkNumber()">Узнать</button>
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkNumber() {
+            var number = document.getElementById( 'ticket' ).value;
+            var a = ((number / 100000)^0) + ((number / 10000 % 10)^0) + ((number / 1000 % 10)^0);
+            var b = ((number / 100 % 10)^0) + ((number / 10 % 10)^0) + (number % 10);
+            var answer = (a === b)? "Ваш билет счастливый!" : "Вам не повезло!";
+            console.log( answer );
+        }
+    </script>
+</body>
+</html>
