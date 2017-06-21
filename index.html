@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Подсчет яблок</title>
+</head>
+<body>
+    <div class="data-form">
+        <div class="data-form__input-form">
+            <label for="apple_p" class="data-form__input-form__label">Количество яблок у Пети:</label>
+            <input type="text" id="apple_p" class="data-form__input-form__input" placeholder="Введите целое число больше и равно нулю">
+        </div>
+        <div class="data-form__input-form">
+            <label for="apple_m" class="data-form__input-form__label">Количество яблок у Маши:</label>
+            <input type="text" id="apple_m" class="data-form__input-form__input" placeholder="Введите целое число больше и равно нулю">
+        </div>
+        <div class="data-form__input-form">
+            <label for="apple_d" class="data-form__input-form__label">Количество яблок у Димы:</label>
+            <input type="number" id="apple_d" class="data-form__input-form__input_disabled" value="8" disabled>
+        </div>
+        <button class="data-form__button" id="getResult" onclick="countApples()">Рассчитать</button>
+    </div>
+    <div class="form-result" id="answer">
+
+    </div>
+    <script>
+        'use strict';
+        function checkData( num1, num2, num3 ) {
+            var result = 1;
+            if ( num1 >= 0 && num1 !== NaN && num1 === (num1 ^ 0) ) {
+                ++result;
+            }
+            if ( num2 >= 0 && num2 !== NaN && num2 === (num2 ^ 0) ) {
+                ++result;
+            }
+            return ++result;
+        }
+
+        function outputText( petya, masha, dima ) {
+            var listOfcounts = 'у Пети - ' + petya + ', у Маши - ' + masha + ', у Димы - ' + dima + '.';
+            return listOfcounts;
+        }
+
+        function countApples() {
+            var appleP = +document.getElementById( 'apple_p' ).value,
+                appleM = +document.getElementById( 'apple_m' ).value,
+                appleD = +document.getElementById( 'apple_d' ).value,
+                correctData = checkData( appleP, appleM, appleD ),
+                result = '<h2>Полученный результат:</h2>';
+
+            if (correctData !== 4) {
+                result += 'Вы ввели неверные данные. Пожалуйста введите целое число больше и равное 0.';
+                document.getElementById( 'answer' ).innerHTML = result;
+                return;
+            }
+
+            result += 'В начале яблок было: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+
+            if ( appleP < appleM ) {
+                if ( appleM % 2 === 0 ) {
+                    appleM /= 2;
+                    appleP += appleM;
+                    result += 'У Пети оказалось меньше яблок, чем у Маши, поэтому он забирает у нее половину. <br>В результате яблок: <br>'  + outputText( appleP, appleM, appleD ) + '<br>';
+                } else if ( appleM === 1 ) {
+                    appleM -= 1;
+                    appleP += 1;
+                    result += 'У Пети оказалось меньше яблок, чем у Маши, поэтому он забирает ее яблоки. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+                } else {
+                    appleM = (appleM - 1) / 2;
+                    appleP = appleP + appleM + 1 ;
+                    result += 'У Пети оказалось меньше яблок, чем у Маши, поэтому он забирает у нее большую половину. <br>В результате яблок: <br>'  + outputText( appleP, appleM, appleD ) + '<br>';
+                }
+            } else {
+                result += 'У Пети больше или равно яблок, чем у Маши, поэтому Петя ее не донимает. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            }
+            if ( appleM < 5 ) {
+                appleD -= 2;
+                appleM +=2;
+                result += 'Дима узнает, что у Маши осталось меньше 5 яблок, поэтому он отдает ей два своих и идет к Пете. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            } else  {
+                result += 'Дима видит, что у Маши 5 или более яблок, поэтому ничего ей не дает и идет к Пете. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            }
+            if ( appleP <= 7 ) {
+                appleP -= appleP;
+                result += 'По дороге Петя съедает все свои яблоки. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            } else {
+                appleP -= 7;
+                result += 'По дороге Петя съедает 7 яблок. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            }
+            if ( appleP >= 10 ) {
+                appleP -= 10;
+                appleD += 10;
+                result += 'Дима видит, что у Пети осталось 10 или более яблок, поэтому он забирает у него 10 штук. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            } else if ( appleP < 10 && appleD < 8 ) {
+                appleM -= 2;
+                appleD += 2;
+                result += 'Дима видит, что у Пети осталось меньше 10 яблок, он идет обратно к Маше и забирает у нее свои 2 яблока. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            } else {
+                result += 'Дима видит, что у Пети осталось меньше 10 яблок, поэтому он успокаивается, довольный собой. <br>В результате яблок: <br>' + outputText( appleP, appleM, appleD ) + '<br>';
+            }
+            document.getElementById( 'answer' ).innerHTML = result;
+            return;
+        }
+    </script>
+</body>
+</html>
