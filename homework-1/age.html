@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Проверка возраста</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="data-form">
+            <div class="data-form__input-form">
+                <label for="age" class="data-form__input-form__label">Укажите, пожалуйста, ваш возраст:</label><br>
+                <input type="text" id="age" class="data-form__input-form__input" placeholder="Возраст">
+            </div>
+            <button class="data-form__button" id="getResult" onclick="checkAge()">ОК</button>
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkAge() {
+            var _age = document.getElementById( 'age' ).value;
+            var answer = ( _age >= 18 )? "Добро пожаловать!" : "Извините, вход лицам, не достигшим 18 лет, воспрещен!";
+            console.log( answer );
+        }
+    </script>
+</body>
+</html>
