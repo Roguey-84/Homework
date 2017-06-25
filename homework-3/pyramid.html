@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Пирамида</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Рисуем пирамиду Хеопса</h1>
+        <div class="data-form">
+            <button class="data-form__button" id="getResult" onclick="checkNumber()">Жми</button>
+        </div>
+        <br>
+        <div class="form-result" id="getAnswer">
+
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkNumber() {
+            let i = 0,
+                result = '';
+            while (i < 20) {
+                i++;
+                result += 'x';
+                console.log(result);
+                document.getElementById( 'getAnswer' ).innerHTML = 'Смотрим в консоль';
+            }
+        }
+    </script>
+</body>
+</html>
