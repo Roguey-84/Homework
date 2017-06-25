@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Числа от 1 до 10 с помощью do while</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Показать числа от 0 до 10?</h1>
+        <div class="data-form">
+            <button class="data-form__button" id="getResult" onclick="checkNumber()">ОК</button>
+        </div>
+        <br>
+        <div class="form-result" id="getAnswer">
+
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkNumber() {
+            let i = 0,
+                result = '',
+                odd = [],
+                even = [];
+
+            do {
+                if ( i === 0) {
+                    result = '0 - это ноль <br>';
+                } else if ( i % 2 === 1 ) {
+                    odd.push(i);
+                } else if ( i % 2 === 0 ) {
+                    even.push(i);
+                }
+                i++;
+            } while (i <= 10);
+            result += odd[0] + ' - нечетное число <br>' + even[0] + ' - четное число <br>'
+                + odd[1] + ' - нечетное число <br>' + even[1] + ' - четное число <br>'
+                + odd[2] + ' - нечетное число <br>' + even[2] + ' - четное число <br>'
+                + odd[3] + ' - нечетное число <br>' + even[3] + ' - четное число <br>'
+                + odd[4] + ' - нечетное число <br>' + even[4] + ' - четное число <br>';
+            document.getElementById('getAnswer').innerHTML = result;
+        }
+    </script>
+</body>
+</html>
