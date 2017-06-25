@@ -8,11 +8,17 @@
     <div class="wrapper">
         <h1>Счастливый билет</h1>
         <div class="data-form">
-            <div class="data-form__input-form">
-                <label for="ticket" class="data-form__input-form__label">Введите номер вашего билета:</label><br>
-                <input type="text" id="ticket" class="data-form__input-form__input" placeholder="Введите шестизначное число">
-            </div>
+            <form action="#" method="post">
+                <div class="data-form__input-form">
+                    <label for="ticket" class="data-form__input-form__label">Введите номер вашего билета:</label><br>
+                    <input type="text" id="ticket" class="data-form__input-form__input" placeholder="Введите шестизначное число">
+                    <input type="reset" class="data-form__input-form__input_reset" value="Очистить форму">
+                </div>
+            </form>
             <button class="data-form__button" id="getResult" onclick="checkNumber()">Узнать</button>
+        </div>
+        <div class="form-result" id="getAnswer">
+
         </div>
     </div>
     <script>
@@ -22,7 +28,7 @@
             var a = ((number / 100000)^0) + ((number / 10000 % 10)^0) + ((number / 1000 % 10)^0);
             var b = ((number / 100 % 10)^0) + ((number / 10 % 10)^0) + (number % 10);
             var answer = (a === b)? "Ваш билет счастливый!" : "Вам не повезло!";
-            console.log( answer );
+            document.getElementById( 'getAnswer' ).innerHTML = answer;
         }
     </script>
 </body>

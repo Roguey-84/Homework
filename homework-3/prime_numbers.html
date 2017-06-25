@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Простые числа</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Узнать простые числа от 0 до 100</h1>
+        <div class="data-form">
+            <button class="data-form__button" id="getResult" onclick="checkNumber()">Жми</button>
+        </div>
+        <br>
+        <div class="form-result" id="getAnswer">
+
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkNumber() {
+            let i = 1,
+                j,
+                pNum = [];
+            primeNumber:
+            while ( i < 100 ) {
+                i++;
+                j = 2;
+                while ( j < i ) {
+                    if ( i % j === 0) continue primeNumber;
+                    j++;
+                }
+                pNum.push(i);
+//                console.log( pNum[3] );
+                document.getElementById( 'getAnswer' ).innerHTML = pNum.toString();
+            }
+        }
+    </script>
+</body>
+</html>
