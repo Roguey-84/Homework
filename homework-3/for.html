@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Числа от 1 до 9 с помощью for</title>
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Хотите увидеть числа от 1 до 9?</h1>
+        <div class="data-form">
+            <button class="data-form__button" id="getResult" onclick="checkNumber()">Да</button>
+        </div>
+        <br>
+        <div class="form-result" id="getAnswer">
+
+        </div>
+    </div>
+    <script>
+        'use strict';
+        function checkNumber() {
+            let num = [];
+            for (var i = 0; i <= 9; i++)
+            num.push(i);
+            document.getElementById('getAnswer').innerHTML = num.toString();
+        }
+    </script>
+</body>
+</html>
