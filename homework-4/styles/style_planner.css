@@ -14,9 +14,34 @@ body {
     width: 100%; }
     body .all_tasks #ordinary_tasks {
       width: 50%;
-      float: left; }
+      float: left;
+      border-right: solid 1px black;
+      box-sizing: border-box;
+      padding: 5px; }
+    body .all_tasks .one_task {
+      width: 100%;
+      position: relative;
+      border-bottom: dashed 1px black;
+      margin: 5px 0; }
+      body .all_tasks .one_task .task_mask {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0; }
+        body .all_tasks .one_task .task_mask:hover {
+          opacity: 1; }
+        body .all_tasks .one_task .task_mask__input {
+          position: absolute;
+          bottom: 0;
+          right: 0; }
+          body .all_tasks .one_task .task_mask__input:focus {
+            outline: none; }
     body .all_tasks #important_tasks {
       float: left;
-      width: 50%; }
+      width: 50%;
+      box-sizing: border-box;
+      padding: 5px; }
 
 /*# sourceMappingURL=style_planner.css.map */

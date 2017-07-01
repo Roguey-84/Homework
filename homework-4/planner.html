@@ -40,21 +40,40 @@
         function getTask() {
             taskData.push({
                 number: taskData.length + 1,
-                text: task.value
+                text: task.value,
+                important: false
             });
             taskOut(taskData[taskData.length - 1]);
-            clearText();
-            return;
+            clearText(task);
         }
         function taskOut(task1) {
-            let ordinaryTaskSet = `<div id="task_${task1.number}">
-            <h3>Задача ${task1.number}</h3>
-            <p>${task1.text}</p>
-            </div>`;
-            ordinaryTaskOut.innerHTML += ordinaryTaskSet;
+            let TaskSet = `<div class="one_task" id="task_${task1.number}">
+                <h3>Задача ${task1.number}</h3>
+                <p>${task1.text}</p>
+                <div class="task_mask">
+                <div class="task_mask__input">
+                <input type="image" src="img/transfer-24.png" title="Перенести в важное" class="transfer_task" onclick="transferTask()" value="transfer">
+                <input type="image" src="img/delete-24.png" title="Удалить" class="delete_task" value="delete">
+                </div>
+                </div>
+                </div>`;
+            if (task1.important === false) {
+                ordinaryTaskOut.innerHTML += TaskSet;
+            } else {
+                importantTaskOut.innerHTML += TaskSet;
+            }
         }
-        function clearText() {
-            task.value = '';
+        function clearText(task1) {
+            task1.value = '';
+        }
+        function transferTask() {
+            if (taskData.important === false) {
+                taskData.important = true;
+            } else {
+                taskData.important = false;
+            }
+//            taskData.important = !taskData.important;
+            taskOut(taskData[taskData.length - 1]);
         }
 
 
