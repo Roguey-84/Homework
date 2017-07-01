@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Планировщик задач</title>
+    <link rel="stylesheet" href="styles/style_planner.css">
+</head>
+<body>
+    <div class="data-form">
+        <h1>Планировщик задач</h1>
+        <label for="in_task">Введите свою задачу:</label><br>
+        <textarea name="my_tasks" id="in_task" cols="60" rows="10">
+
+        </textarea>
+        <br>
+        <!--<div class="data-form__input-form">-->
+            <!--<input type="text" id="in_task" class="data-form__input-form__input" placeholder="Введите задачу">-->
+        <!--</div>-->
+        <button class="data-form__button" id="getResult" onclick="getTask()">Отправить</button>
+    </div>
+    <div class="all_tasks">
+        <div class="form-result" id="ordinary_tasks">
+            <h2>Основные задачи:</h2>
+
+
+        </div>
+        <div class="form-result" id="important_tasks">
+            <h2>Важные задачи:</h2>
+
+        </div>
+    </div>
+    <script>
+        'use strict';
+
+        let task = document.getElementById( 'in_task' ),
+            ordinaryTaskOut = document.getElementById( 'ordinary_tasks' ),
+            importantTaskOut = document.getElementById( 'important_tasks' ),
+            taskData = [];
+        
+        function getTask() {
+            taskData.push({
+                number: taskData.length + 1,
+                text: task.value
+            });
+            taskOut(taskData[taskData.length - 1]);
+            clearText();
+            return;
+        }
+        function taskOut(task1) {
+            let ordinaryTaskSet = `<div id="task_${task1.number}">
+            <h3>Задача ${task1.number}</h3>
+            <p>${task1.text}</p>
+            </div>`;
+            ordinaryTaskOut.innerHTML += ordinaryTaskSet;
+        }
+        function clearText() {
+            task.value = '';
+        }
+
+
+//        let task1 = document.getElementById( 'in_task' ).value;
+//        function getTask() {
+//
+//            document.getElementById( 'answer' ).innerHTML = result.toString();
+//        }
+
+    </script>
+</body>
+</html>

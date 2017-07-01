@@ -1,0 +1,22 @@
+body {
+  width: 100%;
+  min-height: 100%; }
+  body label {
+    font-size: 20px; }
+  body textarea {
+    width: 50%;
+    height: 150px;
+    resize: none;
+    margin-top: 10px;
+    padding: 15px;
+    font: 18px "Times New Roman", serif; }
+  body .all_tasks {
+    width: 100%; }
+    body .all_tasks #ordinary_tasks {
+      width: 50%;
+      float: left; }
+    body .all_tasks #important_tasks {
+      float: left;
+      width: 50%; }
+
+/*# sourceMappingURL=style_planner.css.map */
