@@ -36,7 +36,7 @@ body {
           position: absolute;
           bottom: 0;
           right: 0; }
-          body .all_tasks .one_task .task_mask__input:focus {
+          body .all_tasks .one_task .task_mask__input input:focus {
             outline: none; }
     body .all_tasks #important_tasks {
       float: left;

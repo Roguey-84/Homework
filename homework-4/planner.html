@@ -67,13 +67,9 @@
             task1.value = '';
         }
         function transferTask() {
-            if (taskData.important === false) {
-                taskData.important = true;
-            } else {
-                taskData.important = false;
-            }
-//            taskData.important = !taskData.important;
-            taskOut(taskData[taskData.length - 1]);
+            let impTask = this.document.getElementsByClassName( 'one-task' );
+            let impTask2 = impTask.substring(2);
+            importantTaskOut.innerHTML += impTask2;
         }
 
 
